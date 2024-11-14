@@ -11,9 +11,10 @@ type GameUI interface {
 type Tile rune
 
 const (
-	StoneWall Tile = '#'
-	DirtFloor Tile = '.'
-	Door      Tile = '|'
+	StoneWall  Tile = '#'
+	DirtFloor  Tile = '.'
+	Door       Tile = '|'
+	BlankSpace Tile = ' '
 )
 
 type Level struct {
@@ -43,6 +44,19 @@ func loadLevelFromFile(filename string) *Level {
 	for i := range level.Map {
 		level.Map[i] = make([]Tile, longestRow)
 	}
+	// for y := 0; y < len(level.Map); y++ {
+	// 	line := levelLines[y]
+	// 	for x := 0; x < longestRow; x++ {
+	// 		for _, c := range line {
+	// 			if c == ' ' || c == '\t' || c == '\n' || c == '\r' {
+	// 				level.Map[y][x] = BlankSpace
+	// 			} else {
+	// 				level.Map[y][x] = Tile(c)
+	// 			}
+	// 		}
+	// 	}
+
+	// }
 	return level
 }
 
